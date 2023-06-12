@@ -21,16 +21,35 @@ var query = (from attendance in db.Attendances
             .Distinct().OrderBy(x => x.Date);
 
 
-foreach (var result in query)
+foreach (var q in query)
 {
-    Console.WriteLine($"DATE:{result.Date}, NIM: {result.NIM}, Fullname: {result.Fullname}");
+    Console.WriteLine($"DATE:{q.Date}, NIM: {q.NIM}, Fullname: {q.Fullname}");
 }
 Console.WriteLine();
 
 // var sqlStatement = query.ToString();
 // Console.WriteLine("Generated SQL Statement: {SqlStatement}", sqlStatement);
 
- var sqlStatement = query.ToString();
+var sqlStatement = query.ToString();
 Console.WriteLine("Generated SQL Statement: " + sqlStatement);
+
+// var result = db.Attendances
+//             .GroupBy(a => a.Date)
+//             .Select(g => new { Date = g.Key, Total = g.Sum(a => a.ID) });
+
+var result = db.Attendances
+            .GroupBy(a => a.Date)
+            .Select(g => new { Date = g.Key, DistinctCount = g
+            .Select(a => a.NIM).Distinct().Count()});
+
+foreach (var item in result)
+{
+    // Console.WriteLine($"Date: {item.Date}, Total Attendances: {item.Total}");
+    Console.WriteLine($"Date: {item.Date}, Distinct Attendances: {item.DistinctCount}");
+}
+
+
+var sqlStatement2 = result.ToString();
+Console.WriteLine("Generated SQL Statement: " + sqlStatement2);
 
 
