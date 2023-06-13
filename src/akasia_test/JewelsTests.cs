@@ -17,13 +17,13 @@ public class JewelsTests
             { JewelType.Permata, 3000000 }
         };
 
-        List<KawanLamaJewel> jewels = new List<KawanLamaJewel>
+        List<Jewel> KawanLamaJewel = new ()
         {
-            new KawanLamaJewel { JewelType = JewelType.Ruby, Quantity = 5},
+            new Jewel { JewelType = JewelType.Ruby, Quantity = 5},
         };
 
         // actual
-        var got = jewels.CalculateMaximumIncome(jewelPairPrices);
+        var got = KawanLamaJewel.CalculateMaximumIncome(jewelPairPrices);
 
         // assert
         Assert.That(got, Is.EqualTo(2000000));

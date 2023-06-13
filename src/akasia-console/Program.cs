@@ -42,11 +42,11 @@ foreach (var item in result)
 }
 
 
-List<KawanLamaJewel> jewels = new List<KawanLamaJewel>
+List<Jewel> KawanLamaJewel = new ()
 {
-    new KawanLamaJewel { JewelType = JewelType.Ruby, Quantity = 5},
-    new KawanLamaJewel { JewelType = JewelType.Topaz, Quantity = 3},
-    new KawanLamaJewel { JewelType = JewelType.Permata, Quantity = 1}
+    new Jewel { JewelType = JewelType.Ruby, Quantity = 5},
+    new Jewel { JewelType = JewelType.Topaz, Quantity = 3},
+    new Jewel { JewelType = JewelType.Permata, Quantity = 1}
 };
 
  var jewelPairPrices = new Dictionary<JewelType, decimal>
@@ -56,5 +56,5 @@ List<KawanLamaJewel> jewels = new List<KawanLamaJewel>
             { JewelType.Permata, 3000000 }
         };
 
-decimal maximumIncome = jewels.CalculateMaximumIncome(jewelPairPrices);
+decimal maximumIncome = KawanLamaJewel.CalculateMaximumIncome(jewelPairPrices);
 Console.WriteLine($"Maximum Income: {maximumIncome}");

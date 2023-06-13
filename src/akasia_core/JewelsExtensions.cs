@@ -2,7 +2,7 @@ namespace akasia_core;
 
 public static class JewelsExtensions
 {
-    public static decimal CalculateMaximumIncome(this List<KawanLamaJewel> jewels,Dictionary<JewelType, decimal> jewelPairPrices)
+    public static decimal CalculateMaximumIncome(this List<Jewel> jewels,Dictionary<JewelType, decimal> jewelPairPrices)
     {
         decimal maximumIncome = 0;
 
